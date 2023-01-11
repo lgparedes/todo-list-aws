@@ -1,8 +1,9 @@
+#importacion de librerias
 import json
 import decimalencoder
 import todoList
 
-
+#definicion de funcion get
 def get(event, context):
     # create a response
     item = todoList.get_item(event['pathParameters']['id'])
@@ -17,4 +18,5 @@ def get(event, context):
             "statusCode": 404,
             "body": ""
         }
+        #se retorna la respuesta 404
     return response

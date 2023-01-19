@@ -4,6 +4,8 @@ import logging
 import todoList
 
 # se define la funcion create
+
+
 def create(event, context):
     data = json.loads(event['body'])
     if 'text' not in data:

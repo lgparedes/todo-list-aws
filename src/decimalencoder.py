@@ -6,8 +6,7 @@ import json
 # This is a workaround for: http://bugs.python.org/issue16535
 
 class DecimalEncoder(json.JSONEncoder):
-    def default(self, obj):          # pylint: disable=E0202
-                                     # pylint: enable=E0202
+    def default(self, obj):          
         if isinstance(obj, decimal.Decimal):
             return int(obj)
         return super(DecimalEncoder, self).default(obj)

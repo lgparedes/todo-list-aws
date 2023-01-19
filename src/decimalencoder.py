@@ -1,8 +1,8 @@
-#Importacion de librerias
+# Importacion de librerias
 import decimal
 import json
 
-#marca un error en la linea 8
+# marca un error en la linea 8
 # This is a workaround for: http://bugs.python.org/issue16535
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):          # pylint: disable=E0202

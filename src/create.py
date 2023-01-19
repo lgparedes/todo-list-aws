@@ -1,9 +1,9 @@
-#Se importan las libreiras
+# se importan las libreiras
 import json
 import logging
 import todoList
 
-#Se define la funcion create
+# se define la funcion create
 def create(event, context):
     data = json.loads(event['body'])
     if 'text' not in data:
@@ -16,4 +16,4 @@ def create(event, context):
         "body": json.dumps(item)
     }
     return response
-    #Nos retorna la respuesta
+    # nos retorna la respuesta

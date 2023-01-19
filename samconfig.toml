@@ -9,6 +9,8 @@ capabilities = "CAPABILITY_IAM"
 parameter_overrides = "Stage=\"default\""
 image_repositories = []
 confirm_changeset = true
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1iq0ppop0v4t9"
+disable_rollback = true
 
 [staging]
 [staging.deploy]
@@ -18,6 +20,7 @@ s3_prefix = "todo-list-aws"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
 parameter_overrides = "Stage=\"staging\""
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1iq0ppop0v4t9"
 image_repositories = []
 
 [production]
@@ -28,4 +31,5 @@ s3_prefix = "todo-list-aws"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
 parameter_overrides = "Stage=\"production\""
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1iq0ppop0v4t9"
 image_repositories = []

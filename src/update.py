@@ -1,9 +1,10 @@
+#i mportacion de librerias
 import json
 import logging
 import decimalencoder
 import todoList
 
-
+#definicion de update
 def update(event, context):
     data = json.loads(event['body'])
     if 'text' not in data or 'checked' not in data:
@@ -20,5 +21,5 @@ def update(event, context):
         "body": json.dumps(result,
                            cls=decimalencoder.DecimalEncoder)
     }
-
+#retorna un 200
     return response

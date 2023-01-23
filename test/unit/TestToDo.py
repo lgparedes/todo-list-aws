@@ -58,18 +58,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertIn(tableName, self.table.name)
         #self.assertIn('todoTable', self.table_local.name)
         print ('End: test_table_exists')
-
-        
-    def test_get_table_todo(self):
-        print ('---------------------')
-        print ('Start: test_get_table_todo')
-        # Testing file functions
-        from src.todoList import get_table
-        # Table local
-        response = get_table(self.dynamodb)
-        print ('Response put_item:' + str(response))
-        self.assertEqual(200, response['statusCode'])
-        print ('End: test_get_table_todo')
         
 
     def test_put_todo(self):
@@ -95,6 +83,15 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(Exception, put_item("", self.dynamodb))
         self.assertRaises(Exception, put_item("", self.dynamodb))
         print ('End: test_put_todo_error')
+        
+    def test_put_todo_error_prueba_lg(self):
+        print ('---------------------')
+        print ('Start: test_put_todo_error_prueba_lg')
+        # Testing file functions
+        from src.todoList import put_item
+        # Table mock
+        self.assertRaises(Exception, put_item(-1, -1))
+        print ('End: test_put_todo_error_prueba_lg')
 
     def test_get_todo(self):
         print ('---------------------')

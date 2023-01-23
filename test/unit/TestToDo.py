@@ -10,6 +10,7 @@ import json
 class TestDatabaseFunctions(unittest.TestCase):
     def setUp(self):
         print ('---------------------')
+        print ('---------------------')
         print ('Start: setUp')
         warnings.filterwarnings(
             "ignore",
@@ -33,7 +34,8 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.table = create_todo_table(self.dynamodb)
         #self.table_local = create_todo_table()
         print ('End: setUp')
-
+        
+        
     def tearDown(self):
         print ('---------------------')
         print ('Start: tearDown')
@@ -44,6 +46,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.dynamodb = None
         print ('End: tearDown')
 
+        
     def test_table_exists(self):
         print ('---------------------')
         print ('Start: test_table_exists')
@@ -56,7 +59,8 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertIn(tableName, self.table.name)
         #self.assertIn('todoTable', self.table_local.name)
         print ('End: test_table_exists')
-                
+
+        
     def test_get_table_todo(self):
         print ('---------------------')
         print ('Start: test_get_table_todo')
@@ -67,6 +71,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Response put_item:' + str(response))
         self.assertEqual(200, response['statusCode'])
         print ('End: test_get_table_todo')
+        
 
     def test_put_todo(self):
         print ('---------------------')

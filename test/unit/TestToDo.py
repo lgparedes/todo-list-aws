@@ -33,7 +33,8 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.table = create_todo_table(self.dynamodb)
         #self.table_local = create_todo_table()
         print ('End: setUp')
-
+        
+        
     def tearDown(self):
         print ('---------------------')
         print ('Start: tearDown')
@@ -44,11 +45,12 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.dynamodb = None
         print ('End: tearDown')
 
+        
     def test_table_exists(self):
         print ('---------------------')
         print ('Start: test_table_exists')
-        #self.assertTrue(self.table)  # check if we got a result
-        #self.assertTrue(self.table_local)  # check if we got a result
+        self.assertTrue(self.table)  # check if we got a result
+        self.assertTrue(self.table_local)  # check if we got a result
 
         print('Table name:' + self.table.name)
         tableName = os.environ['DYNAMODB_TABLE'];
@@ -81,6 +83,15 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(Exception, put_item("", self.dynamodb))
         self.assertRaises(Exception, put_item("", self.dynamodb))
         print ('End: test_put_todo_error')
+        
+    def test_put_todo_error_prueba_lg(self):
+        print ('---------------------')
+        print ('Start: test_put_todo_error_prueba_lg')
+        # Testing file functions
+        from src.todoList import put_item
+        # Table mock
+        self.assertRaises(Exception, put_item(-1, -1))
+        print ('End: test_put_todo_error_prueba_lg')
 
     def test_get_todo(self):
         print ('---------------------')
@@ -103,6 +114,17 @@ class TestDatabaseFunctions(unittest.TestCase):
             self.text,
             responseGet['text'])
         print ('End: test_get_todo')
+        
+    def test_get_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_get_todo_error')
+        from src.todoList import get_item
+        
+        responseGet = get_item(
+                -1,
+                self.dynamodb)
+        self.assertRaises(TypeError, get_item("", self.dynamodb))
+        print ('End: test_list_todo_error')
     
     def test_list_todo(self):
         print ('---------------------')
@@ -171,6 +193,13 @@ class TestDatabaseFunctions(unittest.TestCase):
                 updated_text,
                 self.uuid,
                 "",
+                self.dynamodb))
+        self.assertRaises(
+            Exception,
+            update_item(
+                -1,
+                self.uuid,
+                "false",
                 self.dynamodb))
         print ('End: atest_update_todo_error')
 
